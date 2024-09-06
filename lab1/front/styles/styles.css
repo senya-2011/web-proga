@@ -11,7 +11,15 @@
 
 body{
 	background-color: var(--background);
+	font-family: "Advent Pro";
+  	font-optical-sizing: auto;
+  	font-weight: 700;
+  	font-style: normal;
+  	font-variation-settings:
+    "wdth" 100;
 }
+
+
 header {
 	position: fixed;
 	top: 0;
@@ -43,29 +51,25 @@ header:hover {
 	font-size: 32px;
 }
 
-fieldset {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;   
-  border-color: var(--background);
-}
-
 .mainPage {
 	color: var(--front);
-	padding: 5%;
 	background-color: var(--brownBg);
 	border-radius: var(--radius); 
-  width: 40%;
-  margin: auto;
+	width: 40%;
+  	margin: auto;
+	padding: 5%;
 }
 
 .container {
-	display: grid;
-	grid-template-columns: 2fr 1fr;
+	display: flex;
+	flex-direction: row;
+	height: 70%;
 }
 
-.left, .right {
+.item {
 	padding: 5%;
+
+	flex-grow: 1;
 }
 
 hr {
@@ -73,15 +77,23 @@ hr {
 }
 
 #mainButton {
+	background-color: var(--background);
+	font-family: "Advent Pro";
+  	font-optical-sizing: auto;
+  	font-weight: 700;
+  	font-style: normal;
+  	font-variation-settings:
+    "wdth" 100;
+
 	padding: 2%;
-	margin-left: 30%;
+	font-size: 18px;
 	background-color: var(--background);
 	border-radius: var(--radius); 
 	border: 1px solid var(--front);
 	color: var(--front);
 }
 #mainButton:hover {
-	font-size: 	;
+	font-size: 	20px;
 	border: 2px solid var(--front);
 }
 #canvasPlot {
@@ -92,16 +104,6 @@ hr {
 	border-radius: calc(var(--radius)*3); 
 }
 
-.radioButton {
-	accent-color: var(--background);
-	margin-right: 10px;
-}
-
-label {
-	display: flex;
-	align-items: center;
-	margin: 1px;
-}
 .fail{
 	color: var(--failColor);
 	font-weight: bold;
@@ -134,4 +136,44 @@ th {
 }
 td {
 	border: 1px solid var(--front);
+}
+input{
+	border: 1px solid var(--background2);
+	border-radius: 5px;
+	border-color: var(--background2);
+	font-family: "Advent Pro";
+	font-size: 18px;
+}
+input:hover{
+	border: 2px solid var(--background2);
+	border-radius: 5px;
+}
+input:focus{
+	outline: none;
+}
+
+.choices {
+	width: 110px;
+}
+
+.is-focused .choices__inner,
+.is-open .choices__inner{
+	border: 1px solid var(--background2);
+}
+
+.choices__inner{
+	position: relative;
+	background-color: white;
+	color: black;
+	font-size: 20px;
+	border-radius: var(--radius);
+}
+.choices.is-open{
+	position: relative;
+	background-color: white;
+	color:black;
+	border-radius: var(--radius);
+}
+.is-open .choices__inner{
+	border-radius: var(--radius);
 }

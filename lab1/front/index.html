@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>lab1</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css" />
+		<link href="styles/styles.css" rel="stylesheet" type="text/css"/>
+	</head>
+
+	<body>
+		<header>
+			<h1>Веб-программирование, Лабораторная работа №1, Вариант 488775<br/></h1>
+			<h2>Алхимовици Арсений, P3210</h2>
+		</header>
+		<noscript>В вашем браузере выключен JavaScript!<br/>Попробуйте другой браузер или включите js<br/></noscript>
+		<div class="mainPage">
+			<div class="message" id="mainMessage">
+				Info Box
+			</div>
+			<div class="container">
+				<div class="item left">
+					<form id="mainForm" type="submit" method="post" onsubmit="return checkForm(this)">
+						<label class="input" for="xInput">Введите X: </label>
+						<input class="input" name="x" id="xInput" type="text"/><br/><br/>
+
+						<label class="input" for="yInput">Введите Y: </label>
+						<input class="input" name="y" id="yInput" type="text"/><br/><br/>
+						
+						<label class="input" for="rInput">Выберите R:</label>
+						<select class="js-choice" name="select" id="rInput">
+							<option value=1>1</option>
+							<option value=2>2</option>
+							<option value=3>3</option>
+							<option value=4>4</option>
+							<option value=5>5</option>
+						</select>
+						<br/><br/>
+						<input type="submit" name="submit" id = "mainButton" value="Подтвердить" />
+					</form>
+				</div>
+				<div class="item right">
+					<canvas id="canvasPlot"></canvas>
+				</div>
+			</div>	
+		</div>
+		<hr>
+		<div>
+			<table id='resultTable'>
+				<tr>
+					<th>x</th>
+					<th>y</th>
+					<th>r</th>
+					<th>Status</th>
+					<th>current time</th>
+					<th>spent time</th>
+				</tr>
+				<tbody id  ="megaTbodyEshkere"></tbody>
+			</table>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
+		<script type="text/javascript" src="canvas.js"></script>
+		<script type="text/javascript" src="script.js"></script>
+	</body>
+</html>

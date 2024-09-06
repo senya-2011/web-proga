@@ -70,43 +70,26 @@ function makeGraphics(){
 	ctx.beginPath()
 	ctx.moveTo(xAxis, yAxis);
 	ctx.lineTo(xAxis, yAxis+2*scaleY);
-	ctx.lineTo(xAxis-scaleX, yAxis);
+	ctx.lineTo(xAxis-2*scaleX, yAxis);
 	ctx.lineTo(xAxis, yAxis);
 	ctx.closePath();
 	ctx.fill();
 	//circle
 	ctx.beginPath();
-	ctx.arc(xAxis, yAxis-1.5*scaleY, 2.5*scaleY, 0.643501, Math.PI/2, false);; //координаты центра, радиус, начальный угол в радианах, конечный угол в радианах
+	ctx.arc(xAxis, yAxis+1.5*scaleY, 2.5*scaleY, 3/2*Math.PI, -0.643501, false); //координаты центра, радиус, начальный угол в радианах, конечный угол в радианах
 	ctx.lineTo(xAxis, yAxis);
 	ctx.closePath();
 	ctx.fill();
+	//0.643501
 	
 	ctx.fillStyle = "black";
-	ctx.globalAlpha = 1; //ставим обратно прозрачность на 100%
+	ctx.globalAlpha = 1; //прозрачность на 100%
 }
 
-function makePoint(x, y, r){
-	ctx.clearRect(0, 0, width, height);
-	ctx.fillStyle = "black";
-	makeCanvas();
-	ctx.beginPath();
-	ctx.arc(xAxis +(2*x/r)*scaleX, yAxis-(2*y/r)*scaleY, markerRadius, 0, 2 * Math.PI, false);
-	if(isThisHit(x, y, r)){
-		ctx.fillStyle = "green";
-	}else{
-		ctx.fillStyle = "red";
-	}
-	
-	ctx.fill();
-	ctx.lineWidth = 1;
-	ctx.strokeStyle = pointStyle;
-	ctx.stroke();
-	ctx.closePath();
-}
 
 function isThisHit(x, y, r){
 	//square
-	if(r*xSquare*x>=0 && Math.abs(x)<=xSquare && -r*ySquare*y>=0 && Math.abs(y) <=-ySquare){
+	if(r*xSquare*x>=0 && Math.abs(x)<=r && -r*ySquare*y>=0 && Math.abs(y) <=r){
 		return true;
 	}
 	//triangle
@@ -136,7 +119,7 @@ function isInCircle(x, y, r){
 const netColor = "#c7c7c7"; 
 const axesColor = "#000000";
 const pointStyle = "#003300";
-const graphColor = "#0047ab";
+const graphColor = "#0047ab"; 
 const canvasPlot = document.getElementById("canvasPlot");
 const ctx = canvasPlot.getContext("2d");
 const width = canvasPlot.clientWidth;
@@ -149,9 +132,9 @@ const markerRadius = 3;
 
 //squareCoords
 const xSquare = 2;
-const ySquare = -2;
+const ySquare = 1;
 //triangleCoords
-const x1 = -1/2;
+const x1 = -1;
 const x2 = 0;
 const x3 = 0;
 const y1 = 0;
