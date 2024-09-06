@@ -47,11 +47,12 @@ public class Main {
 
     static Logger logger = Logger.getLogger(Main.class.getName());
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
+        
 
         FCGIInterface fcgiInterface = new FCGIInterface();
         while (fcgiInterface.FCGIaccept() >= 0) {
             try {
+                long startTime = System.currentTimeMillis();
                 String content = """
                 {
                     "status": "%s",
