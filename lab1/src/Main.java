@@ -52,7 +52,7 @@ public class Main {
         FCGIInterface fcgiInterface = new FCGIInterface();
         while (fcgiInterface.FCGIaccept() >= 0) {
             try {
-                long startTime = System.currentTimeMillis();
+                long startTime = System.nanoTime();
                 String content = """
                 {
                     "status": "%s",
@@ -70,9 +70,9 @@ public class Main {
                     status = false;
                 }
                 
-                long endTime = System.currentTimeMillis();
-                long executeTime = endTime - startTime;
-                content = content.formatted(status, executeTime);
+                long endTime = System.nanoTime();
+                long executeTime = (endTime - startTime);
+                content = content.formatted(status, String.format("%.3f",(double) executeTime/1000000));
 
                 String response = """
                         HTTP/2 200 OK

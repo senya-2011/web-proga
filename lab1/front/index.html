@@ -8,6 +8,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css" />
 		<link href="styles/styles.css" rel="stylesheet" type="text/css"/>
+		<link href="styles/media.css" rel="stylesheet" type="text/css"/>
 	</head>
 
 	<body>
@@ -24,10 +25,10 @@
 				<div class="item left">
 					<form id="mainForm" type="submit" method="post" onsubmit="return checkForm(this)">
 						<label class="input" for="xInput">Введите X: </label>
-						<input class="input" name="x" id="xInput" type="text"/><br/><br/>
+						<input class="input" name="x" id="xInput" type="text" maxlength="5"/><br/><br/>
 
 						<label class="input" for="yInput">Введите Y: </label>
-						<input class="input" name="y" id="yInput" type="text"/><br/><br/>
+						<input class="input" name="y" id="yInput" type="text" maxlength="5"/><br/><br/>
 						
 						<label class="input" for="rInput">Выберите R:</label>
 						<select class="js-choice" name="select" id="rInput">
