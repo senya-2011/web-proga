@@ -19,7 +19,7 @@ services:
   nginx:
     image: nginx
     ports:
-      - "8001:80"
+      - "8000:80"
     depends_on:
       - java-fcgi
       - frontend
