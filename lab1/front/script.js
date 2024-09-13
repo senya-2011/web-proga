@@ -66,7 +66,6 @@ function checkForm(element){
 		<td>${data.time + "ms"}</td>
 
 		`;
-
 		tbody.prepend(row);
 
 		

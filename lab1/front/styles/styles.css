@@ -31,10 +31,12 @@ header {
 	text-align: center;
 	border-radius: var(--radius);
 	z-index: 9999;
+	transition: 0.2s;
 }
 
 
 header:hover {
+	font-size: large;
 	border: 3px solid var(--front);
 }
 
@@ -48,6 +50,7 @@ header:hover {
 	width: 100%;
 	text-align: center;
 	border-radius: var(--radius);
+	transition: 0.2s;
 }
 .message:hover{
 	font-size: 32px;
@@ -92,9 +95,10 @@ form > button {
 	border-radius: var(--radius); 
 	border: 1px solid var(--front);
 	color: var(--front);
+	transition: all 0.5s ease 0.1s;
 }
 #mainButton:hover {
-	font-size: 	20px;
+	font-size: 23px;
 	border: 2px solid var(--front);
 }
 #canvasPlot {
@@ -138,12 +142,27 @@ th {
 td {
 	border: 1px solid var(--front);
 }
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0.2; 
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+tr {
+    animation: fadeIn 1s ease;
+}
+
 input{
 	border: 1px solid var(--background2);
 	border-radius: 5px;
 	border-color: var(--background2);
 	font-family: "Advent Pro";
 	font-size: 18px;
+	transition: 0.1s;
 }
 input:hover{
 	border: 2px solid var(--background2);
