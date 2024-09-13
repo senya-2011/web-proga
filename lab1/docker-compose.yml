@@ -9,21 +9,13 @@ services:
       context: .
     networks:
       - web
-
-  frontend:
-    build:
-      context: ./front
-    networks:
-      - web  
   
   nginx:
-    image: nginx
+    build:
+      context: ./front
     ports:
       - "8000:80"
     depends_on:
       - java-fcgi
-      - frontend
-    volumes:
-      - './nginx.conf:/etc/nginx/nginx.conf'
     networks:
       - web 
