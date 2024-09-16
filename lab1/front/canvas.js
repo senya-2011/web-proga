@@ -24,7 +24,7 @@ function makeCanvas(){
 	}
 
 	ctx.stroke();
-	ctx.closePath;
+	ctx.closePath();
 
 	//axes
 	ctx.beginPath();
@@ -101,10 +101,10 @@ function isThisHit(x, y, r){
 }
 function isInTriangle(x,y,r){
 	//проверка суммой площадей
-	var s = r*r*Math.abs(x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2));
-	var s1 = Math.abs(x*(r*y1-r*y2)+r*x1*(r*y2-y)+x2*(y-r*y1));
-	var s2 = Math.abs(x*(r*y2-r*y3)+r*x2*(r*y3-y)+x3*(y-r*y2));
-	var s3 = Math.abs(x*(r*y3-r*y1)+r*x3*(r*y1-y)+r*x1*(y-r*y3));
+	let s = r*r*Math.abs(x1*(y2-y3)+x2*(y3-y1)+x3*(y1-y2));
+	let s1 = Math.abs(x*(r*y1-r*y2)+r*x1*(r*y2-y)+x2*(y-r*y1));
+	let s2 = Math.abs(x*(r*y2-r*y3)+r*x2*(r*y3-y)+x3*(y-r*y2));
+	let s3 = Math.abs(x*(r*y3-r*y1)+r*x3*(r*y1-y)+r*x1*(y-r*y3));
 	
 	return s==(s1+s2+s3);
 }

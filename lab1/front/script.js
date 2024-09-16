@@ -29,6 +29,7 @@ function checkForm(element){
 		message.style.backgroundColor = failColor;
 		return false;
 	}
+	let x, y, r;
 	x = Number(element.xInput.value);
 	y = Number(element.yInput.value);
 	r = Number(element.rInput.value);
@@ -40,7 +41,7 @@ function checkForm(element){
 		message.style.backgroundColor = failColor;
 		return false;
 	}
-	var dataToServer = {
+	let dataToServer = {
 		x: x,
 		y: y,
 		user_r: r
@@ -54,9 +55,9 @@ function checkForm(element){
 	})
 	.then(response => response.json())
 	.then(data => {
-		const status=data.status;
+		let status=data.status;
 		makePoint(x,y,r,status);
-		var row = document.createElement('tr');
+		let row = document.createElement('tr');
 		row.innerHTML = `
 		<td>${x}</td>
 		<td>${y}</td>
@@ -88,20 +89,23 @@ const choices = new Choices(element, {
 	itemSelectText: "Выберите R"
 });
 
-var x, y, r, message;
+
 const maxNum = 5;
 const successMessage = "Данные валидны";
 const failMessage = "Введенные данные не валидны";
 const successColor = "green";
 const failColor = "red";
-message = document.getElementById("mainMessage");
+const message = document.getElementById("mainMessage");
 const table = document.getElementById('resultTable');
 const tbody = document.getElementById('megaTbodyEshkere');
 
 window.onload = function() {
 	
-	var tableData = localStorage.getItem('tableData'); 
-	if (tableData) {
-		document.getElementById('megaTbodyEshkere').innerHTML = tableData;
+	if (localStorage.getItem('tableData')){
+		let tableData = localStorage.getItem('tableData'); 
+		if (tableData) {
+			document.getElementById('megaTbodyEshkere').innerHTML = tableData;
+		}
 	}
+	
 };
