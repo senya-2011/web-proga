@@ -47,13 +47,9 @@ header:hover {
 	border: 1px solid var(--front);
 	margin-top: 15%;
 	margin-bottom: 10%;
-	width: 100%;
+
 	text-align: center;
 	border-radius: var(--radius);
-	transition: 0.2s;
-}
-.message:hover{
-	font-size: 32px;
 }
 
 .mainPage {
@@ -164,10 +160,7 @@ input{
 	font-size: 18px;
 	transition: 0.1s;
 }
-input:hover{
-	border: 2px solid var(--background2);
-	border-radius: 5px;
-}
+
 input:focus{
 	outline: none;
 }
