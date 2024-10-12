@@ -3,9 +3,9 @@ package logic.ResponseManagers;
 import logic.Point;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
-import javax.servlet.http.HttpServletRequest;
 
 public class ContextManager {
     public void setNewPoint(Point point, HttpServletRequest req){

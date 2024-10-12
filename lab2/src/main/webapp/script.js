@@ -12,6 +12,13 @@ function checkR(r){
 	return (r>=1 && r<=3);
 }
 
+function submitForm(){
+	let x = form.get('x');
+	let y = form.get('y');
+	let r = form.get('r');
+	doFetch(x, y, r);
+}
+
 function doFetch(x, y, r){
 	if (checkVal(x, y, r)){
 		let request = {
@@ -103,7 +110,5 @@ const successColor = "green";
 const failColor = "red";
 const message = document.getElementById("mainMessage");
 const tbody = document.getElementById('megaTbodyEshkere');
+const form = document.getElementById("mainForm");
 
-window.onload = function() {
-	makeCanvas();
-};

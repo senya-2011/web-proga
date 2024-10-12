@@ -111,6 +111,8 @@ const rInput = document.getElementById("rInput");
 //circle
 const radius = 2*scaleX;
 
+makeCanvas();
+
 canvasPlot.addEventListener('click', function(event) {
 	let rect = canvasPlot.getBoundingClientRect(); //данные об окне (расстояние от краев и тд)
 	let x = event.clientX - rect.left;

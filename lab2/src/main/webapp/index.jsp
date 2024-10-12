@@ -44,9 +44,8 @@
 <%--                <br/><br/>--%>
 <%--                <button type="submit" name="submit" id = "mainButton">Подтвердить</button>--%>
 <%--            </form>--%>
-            <div id="mainForm">
-<%--                <label class="input" for="xInput">Введите X: </label>--%>
-<%--                <input class="input" name="x" id="xInput" type="text" maxlength="5"/><br/><br/>--%>
+
+            <form id="mainForm" type="submit" onsubmit="submitForm(); return false;">
                 <label class="input" for="xInput">Выберите X:</label>
                 <select class="select" name="x" id="xInput">
                     <option value=-4>-4</option>
@@ -71,7 +70,36 @@
                 </select>
                 <br/><br/>
                 <button id="mainButton" type="button" onclick="doPost()">Подтвердить</button>
-            </div>
+            </form>
+
+<%--            <div id="mainForm">--%>
+<%--&lt;%&ndash;                <label class="input" for="xInput">Введите X: </label>&ndash;%&gt;--%>
+<%--&lt;%&ndash;                <input class="input" name="x" id="xInput" type="text" maxlength="5"/><br/><br/>&ndash;%&gt;--%>
+<%--                <label class="input" for="xInput">Выберите X:</label>--%>
+<%--                <select class="select" name="x" id="xInput">--%>
+<%--                    <option value=-4>-4</option>--%>
+<%--                    <option value=-3>-3</option>--%>
+<%--                    <option value=-2>-2</option>--%>
+<%--                    <option value=-1>-1</option>--%>
+<%--                    <option value=0>0</option>--%>
+<%--                    <option value=1>1</option>--%>
+<%--                    <option value=2>2</option>--%>
+<%--                    <option value=3>3</option>--%>
+<%--                    <option value=4>4</option>--%>
+<%--                </select><br/><br/>--%>
+
+<%--                <label class="input" for="yInput">Введите Y: </label>--%>
+<%--                <input class="input" name="y" id="yInput" type="text" maxlength="6"/><br/><br/>--%>
+
+<%--                <label class="input" for="rInput">Выберите R:</label>--%>
+<%--                <select class="select" name="r" id="rInput">--%>
+<%--                    <option value=1>1</option>--%>
+<%--                    <option value=2>2</option>--%>
+<%--                    <option value=3>3</option>--%>
+<%--                </select>--%>
+<%--                <br/><br/>--%>
+<%--                <button id="mainButton" type="button" onclick="doPost()">Подтвердить</button>--%>
+<%--            </div>--%>
         </div>
         <div class="item right">
             <canvas id="canvasPlot" width="300" height="300"></canvas>
