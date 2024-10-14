@@ -122,48 +122,50 @@
                 List<Point> points = (List<Point>) application.getAttribute("results");
                 if (points!=null){
                     for(Point point:points){
+                        if (point.getId().equals(request.getSession().getAttribute("id"))){
             %>
-                <tr>
-                    <td>
-                        <%if (point.getX()== (int) point.getX()){%>
-                            <%=(int)(point.getX()) %>
-                        <%}else{%>
-                            <%=point.getX()%>
-                        <%}%>
-                    </td>
-                    <td>
-                        <%if (point.getY()== (int) point.getY()){%>
-                        <%=(int)(point.getY()) %>
-                        <%}else{%>
-                        <%=point.getY()%>
-                        <%}%>
-                    </td>
-                    <td>
-                        <%if (point.getR()== (int) point.getR()){%>
-                        <%=(int)(point.getR()) %>
-                        <%}else{%>
-                        <%=point.getR()%>
-                        <%}%>
-                    </td>
+                            <tr>
+                                <td>
+                                    <%if (point.getX()== (int) point.getX()){%>
+                                        <%=(int)(point.getX()) %>
+                                    <%}else{%>
+                                        <%=point.getX()%>
+                                    <%}%>
+                                </td>
+                                <td>
+                                    <%if (point.getY()== (int) point.getY()){%>
+                                    <%=(int)(point.getY()) %>
+                                    <%}else{%>
+                                    <%=point.getY()%>
+                                    <%}%>
+                                </td>
+                                <td>
+                                    <%if (point.getR()== (int) point.getR()){%>
+                                    <%=(int)(point.getR()) %>
+                                    <%}else{%>
+                                    <%=point.getR()%>
+                                    <%}%>
+                                </td>
 
-                    <%
-                    String status = point.getStatus();
-                    if (status.equals("true")) {
-                    %>
-                        <td><span style="color: #05da00">&#9745;</span></td>
-                    <%
-                    } else if (status.equals("false")) {
-                    %>
-                        <td><span style="color: red">&#9746;</span></td>
-                    <%
-                    }else{
-                    %>
-                        <td><%=status%></td>
-                    <%
-                    }
-                    %>
-                </tr>
+                                <%
+                                String status = point.getStatus();
+                                if (status.equals("true")) {
+                                %>
+                                    <td><span style="color: #05da00">&#9745;</span></td>
+                                <%
+                                } else if (status.equals("false")) {
+                                %>
+                                    <td><span style="color: red">&#9746;</span></td>
+                                <%
+                                }else{
+                                %>
+                                    <td><%=status%></td>
+                                <%
+                                }
+                                %>
+                            </tr>
                 <%
+                            }
                     }
                 }
                 %>

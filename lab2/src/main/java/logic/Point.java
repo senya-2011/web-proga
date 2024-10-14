@@ -4,6 +4,7 @@ public class Point {
     float x;
     float y;
     float r;
+    String id;
     String status;
     AreaChecker areaChecker = new AreaChecker();
     public Point(float[] floats){
@@ -19,7 +20,10 @@ public class Point {
     public float getX(){
         return x;
     }
-
+    public void setId(String id){
+        this.id = id;
+    }
+    public String getId(){return id;}
     public float getY() {
         return y;
     }
