@@ -110,8 +110,13 @@ const arrow3 = 3;
 const rInput = document.getElementById("rInput");
 //circle
 const radius = 2*scaleX;
+let lastPoint = JSON.parse(localStorage.getItem('lastPoint'));
+if (lastPoint!= null){
+	makePoint(lastPoint.x, lastPoint.y, lastPoint.r, lastPoint.status);
+}else{
+	makeCanvas();
+}
 
-makeCanvas();
 
 canvasPlot.addEventListener('click', function(event) {
 	let rect = canvasPlot.getBoundingClientRect(); //данные об окне (расстояние от краев и тд)

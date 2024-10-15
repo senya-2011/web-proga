@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css" />
     <link href="styles/styles.css" rel="stylesheet" type="text/css"/>
     <link href="styles/media.css" rel="stylesheet" type="text/css"/>
+
 </head>
 
 <body>
@@ -120,6 +121,7 @@
         <tbody id  ="megaTbodyEshkere">
             <%
                 List<Point> points = (List<Point>) application.getAttribute("results");
+                Point lastPoint;
                 if (points!=null){
                     for(Point point:points){
                         if (point.getId().equals(request.getSession().getAttribute("id"))){
@@ -172,7 +174,6 @@
         </tbody>
     </table>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/scripts/choices.min.js"></script>
 <script type="text/javascript" src="script.js"></script>
 <script type="text/javascript" src="canvas.js"></script>
 </body>

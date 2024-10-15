@@ -26,4 +26,13 @@
     <url-pattern>/AreaCheckServlet</url-pattern>
   </servlet-mapping>
 
+  <filter>
+    <filter-name>ReferrerFilter</filter-name>
+    <filter-class>logic.ReferrerFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>ReferrerFilter</filter-name>
+    <servlet-name>AreaCheckServlet</servlet-name>
+  </filter-mapping>
 </web-app>

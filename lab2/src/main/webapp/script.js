@@ -35,6 +35,12 @@ function doFetch(x, y, r){
 		})
 			.then(response => response.json())
 			.then(data => {
+				localStorage.setItem('lastPoint', JSON.stringify({
+					x: data.x,
+					y: data.y,
+					r: data.r,
+					status: data.status
+				}));
 				makePoint(data.x,data.y,data.r,data.status);
 				let row = document.createElement('tr');
 				row.innerHTML = `
@@ -44,7 +50,7 @@ function doFetch(x, y, r){
 				<td>${data.status=="true" ? '<span style="color: #05da00">&#9745;</span>' : data.status=="false" ? '<span style="color: red">&#9746;</span>' : data.status}</td>
 				`;
 				tbody.prepend(row);
-
+				fetchInitialResult();
 			})
 			.catch((error) => {
 				console.error('Error:', error);
@@ -104,6 +110,41 @@ function checkVal(x, y ,r){
 	return true;
 }
 
+window.addEventListener('storage', (event) => {
+	window.location.reload();
+
+});
+
+var lastResult;
+
+function fetchInitialResult() {
+	fetch('/check_session')
+		.then(response => response.json())
+		.then(data => {
+			lastResult = data.result;
+		})
+		.catch(error => {
+			console.error(error);
+		});
+}
+
+function checkForUpdates() {
+	fetch('/check_session')
+		.then(response => {
+			return response.json();
+		})
+		.then(data => {
+			if (lastResult !== data.result) {
+				window.location.reload();
+			}
+		})
+		.catch(error => {
+			console.error(error);
+		});
+}
+fetchInitialResult();
+console.log(lastResult);
+
 const successMessage = "Данные валидны";
 const failMessage = "Введенные данные не валидны";
 const successColor = "green";
@@ -112,3 +153,4 @@ const message = document.getElementById("mainMessage");
 const tbody = document.getElementById('megaTbodyEshkere');
 const form = document.getElementById("mainForm");
 
+setInterval(checkForUpdates, 1000);

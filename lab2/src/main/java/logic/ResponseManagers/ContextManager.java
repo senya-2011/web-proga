@@ -12,6 +12,7 @@ import java.util.UUID;
 public class ContextManager {
     public void setNewPoint(Point point, HttpServletRequest req){
         HttpSession session = req.getSession();
+
         String id = (String) session.getAttribute("id");
         if (id == null) {
             id = UUID.randomUUID().toString();
@@ -23,6 +24,7 @@ public class ContextManager {
         if (results == null) {
             results = new ArrayList<>();
         }
+        session.setAttribute("results", results.toString());
         results.add(0, point);
         context.setAttribute("results", results);
     }
