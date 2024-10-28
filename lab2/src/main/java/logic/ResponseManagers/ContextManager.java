@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import static com.sun.jmx.mbeanserver.Util.cast;
+
 public class ContextManager {
     public void setNewPoint(Point point, HttpServletRequest req){
         HttpSession session = req.getSession();
@@ -20,8 +22,11 @@ public class ContextManager {
         }
         point.setId(id);
         ServletContext context = req.getServletContext();
-        List<Point> results = (List<Point>) context.getAttribute("results");
-        if (results == null) {
+        List<Point> results;
+        Object resultObj= context.getAttribute("results");
+        if (resultObj instanceof List<?>){
+            results = cast(resultObj);
+        }else{
             results = new ArrayList<>();
         }
         session.setAttribute("results", results.toString());

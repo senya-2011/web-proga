@@ -1,4 +1,5 @@
- 
+import { makePoint } from './canvas.js';
+
 function checkNumber(x, y, r){
 	return ((x>=-4 && x<=4) && (y>=-3 && y<=3) && (r>=1 && r<=3));
 }
@@ -12,14 +13,14 @@ function checkR(r){
 	return (r>=1 && r<=3);
 }
 
-function submitForm(){
-	let x = form.get('x');
-	let y = form.get('y');
-	let r = form.get('r');
-	doFetch(x, y, r);
-}
+// function submitForm(){
+// 	let x = form.get('x');
+// 	let y = form.get('y');
+// 	let r = form.get('r');
+// 	doFetch(x, y, r);
+// }
 
-function doFetch(x, y, r){
+export function doFetch(x, y, r){
 	if (checkVal(x, y, r)){
 		let request = {
 			"x": x,
@@ -47,7 +48,7 @@ function doFetch(x, y, r){
 				<td>${data.x}</td>
 				<td>${data.y}</td>
 				<td>${data.r}</td>
-				<td>${data.status=="true" ? '<span style="color: #05da00">&#9745;</span>' : data.status=="false" ? '<span style="color: red">&#9746;</span>' : data.status}</td>
+				<td>${data.status==="true" ? '<span style="color: #05da00">&#9745;</span>' : data.status==="false" ? '<span style="color: red">&#9746;</span>' : data.status}</td>
 				`;
 				tbody.prepend(row);
 				fetchInitialResult();
@@ -58,31 +59,11 @@ function doFetch(x, y, r){
 	}
 }
 
-function doPost(){
+export function doPost(){
 	let x = (document.getElementById("xInput").value).replace(",", ".");
 	let y = (document.getElementById("yInput").value).replace(",", ".");
 	let r = (document.getElementById("rInput").value).replace(",", ".");
 	doFetch(x, y, r);
-}
-
-function makePoint(x, y, r, status){
-	ctx.clearRect(0, 0, width, height);
-	ctx.fillStyle = "black";
-	makeCanvas();
-
-	ctx.beginPath();
-	ctx.arc(xAxis +(2*x/r)*scaleX, yAxis-(2*y/r)*scaleY, markerRadius, 0, 2 * Math.PI, false);
-	if(status=="true"){
-		ctx.fillStyle = successColor;
-	}else{
-		ctx.fillStyle = failColor;
-	}
-	
-	ctx.fill();
-	ctx.lineWidth = 1;
-	ctx.strokeStyle = pointStyle;
-	ctx.stroke();
-	ctx.closePath();
 }
 
 
@@ -110,12 +91,14 @@ function checkVal(x, y ,r){
 	return true;
 }
 
-window.addEventListener('storage', (event) => {
+window.addEventListener('storage', () => {
 	window.location.reload();
 
 });
 
-var lastResult;
+
+
+let lastResult;
 
 function fetchInitialResult() {
 	fetch('/check_session')
@@ -143,14 +126,16 @@ function checkForUpdates() {
 		});
 }
 fetchInitialResult();
-console.log(lastResult);
 
 const successMessage = "Данные валидны";
 const failMessage = "Введенные данные не валидны";
 const successColor = "green";
 const failColor = "red";
+export { successColor };
+export { failColor };
 const message = document.getElementById("mainMessage");
 const tbody = document.getElementById('megaTbodyEshkere');
-const form = document.getElementById("mainForm");
+//const form = document.getElementById("mainForm");
+document.getElementById("mainButton").addEventListener("click", doPost);
 
 setInterval(checkForUpdates, 1000);

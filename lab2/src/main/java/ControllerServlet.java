@@ -1,6 +1,5 @@
 import logic.RequestManagers.ParamChecker;
 import logic.RequestManagers.RequestReader;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +20,8 @@ public class ControllerServlet extends HttpServlet {
             req.setAttribute("token", token);
             req.setAttribute("params", params);
             req.getRequestDispatcher("AreaCheckServlet").forward(req, resp);
+            //req.getRequestDispatcher("AreaCheckServlet").include(req, resp);
+            resp.getWriter().println("jjjj");
         } else {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid input");
         }

@@ -11,7 +11,7 @@
 
 body{
 	background-color: var(--background);
-	font-family: "Advent Pro";
+	font-family: "Advent Pro", serif;
   	font-optical-sizing: auto;
   	font-weight: 700;
   	font-style: normal;
@@ -79,7 +79,7 @@ hr {
 
 
 #mainButton {
-	font-family: "Advent Pro";
+	font-family: "Advent Pro", serif;
 	font-size: 20px;
 	background-color: var(--background);
 	border-radius: var(--radius); 
@@ -154,7 +154,7 @@ input{
 	border: 1px solid var(--background2);
 	border-radius: 5px;
 	border-color: var(--background2);
-	font-family: "Advent Pro";
+	font-family: "Advent Pro", serif;
 	font-size: 18px;
 	transition: 0.1s;
 }

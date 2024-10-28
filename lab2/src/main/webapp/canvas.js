@@ -1,3 +1,7 @@
+import { doFetch } from './script.js';
+import { failColor } from './script.js';
+import { successColor } from './script.js';
+
 function makeCanvas(){
 	ctx.beginPath();
 	ctx.strokeStyle = netColor;
@@ -8,8 +12,8 @@ function makeCanvas(){
 	for(let i=0; i<= width; i = i + scaleX) {
 		ctx.moveTo(i, 0);
 		ctx.lineTo(i, height);
-		if((i-xAxis)==0){
-			ctx.fillText((i-xAxis)/(2*scaleX),i, yAxis+2);	
+		if((i-xAxis)===0){
+			ctx.fillText(String((i-xAxis)/(2*scaleX)),i, yAxis+2);
 		}else if(!(((i-xAxis)/scaleX)<=-3)){
 			ctx.fillText((i-xAxis)/(2*scaleX) + "R",i, yAxis+2);
 		}
@@ -18,7 +22,7 @@ function makeCanvas(){
 	for(let i=0; i<= height; i = i + scaleY){
 		ctx.moveTo(0, i);
 		ctx.lineTo(width, i);
-		if((yAxis-i)!=0 && ((yAxis-i)/scaleY)<3 && ((yAxis-i)/scaleY)>-3){
+		if((yAxis-i)!==0 && ((yAxis-i)/scaleY)<3 && ((yAxis-i)/scaleY)>-3){
 			ctx.fillText((yAxis-i)/(2*scaleY) + "R",xAxis+2, i);
 		}
 	}
@@ -60,6 +64,26 @@ function makeArrows(){
 	ctx.closePath();
 }
 
+export function makePoint(x, y, r, status){
+	ctx.clearRect(0, 0, width, height);
+	ctx.fillStyle = "black";
+	makeCanvas();
+
+	ctx.beginPath();
+	ctx.arc(xAxis +(2*x/r)*scaleX, yAxis-(2*y/r)*scaleY, markerRadius, 0, 2 * Math.PI, false);
+	if(status==="true"){
+		ctx.fillStyle = successColor;
+	}else{
+		ctx.fillStyle = failColor;
+	}
+
+	ctx.fill();
+	ctx.lineWidth = 1;
+	ctx.strokeStyle = pointStyle;
+	ctx.stroke();
+	ctx.closePath();
+}
+
 function makeGraphics(){
 	ctx.globalAlpha = 0.3;
 
@@ -69,8 +93,8 @@ function makeGraphics(){
 	//triangle
 	ctx.beginPath()
 	ctx.moveTo(xAxis, yAxis);
-	ctx.lineTo(xAxis, yAxis-1*scaleY);
-	ctx.lineTo(xAxis-1*scaleX, yAxis);
+	ctx.lineTo(xAxis, yAxis-scaleY);
+	ctx.lineTo(xAxis-scaleX, yAxis);
 	ctx.lineTo(xAxis, yAxis);
 	ctx.closePath();
 	ctx.fill();
@@ -85,20 +109,21 @@ function makeGraphics(){
 	ctx.fillStyle = "black";
 	ctx.globalAlpha = 1; //прозрачность на 100%
 }
-
+const markerRadius = 3;
+const pointStyle = "#003300";
 const netColor = "#c7c7c7"; 
 const axesColor = "#000000";
-const pointStyle = "#003300";
+//const pointStyle = "#003300";
 const graphColor = "#0047ab"; 
 const canvasPlot = document.getElementById("canvasPlot");
 const ctx = canvasPlot.getContext("2d");
 const width = canvasPlot.clientWidth;
 const height = canvasPlot.clientHeight;
 const scaleX = 50;
-const scaleY = scaleX;
+const scaleY = 50;
 const xAxis = 150;
-const yAxis = xAxis;
-const markerRadius = 3;
+const yAxis = 150;
+//const markerRadius = 3;
 
 //squareCoords
 const xSquare = 2;

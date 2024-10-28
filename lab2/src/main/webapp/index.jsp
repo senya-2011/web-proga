@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="logic.Point, java.util.List" %>
+<%@ page import="static com.sun.jmx.mbeanserver.Util.cast" %>
+<%@ page import="java.util.ArrayList" %>
 
 
 <!DOCTYPE html>
@@ -10,7 +12,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js@9.0.1/public/assets/styles/choices.min.css" />
     <link href="styles/styles.css" rel="stylesheet" type="text/css"/>
     <link href="styles/media.css" rel="stylesheet" type="text/css"/>
 
@@ -46,7 +47,7 @@
 <%--                <button type="submit" name="submit" id = "mainButton">Подтвердить</button>--%>
 <%--            </form>--%>
 
-            <form id="mainForm" type="submit" onsubmit="submitForm(); return false;">
+<%--            <form id="mainForm" onsubmit="submitForm(); return false;">--%>
                 <label class="input" for="xInput">Выберите X:</label>
                 <select class="select" name="x" id="xInput">
                     <option value=-4>-4</option>
@@ -70,8 +71,8 @@
                     <option value=3>3</option>
                 </select>
                 <br/><br/>
-                <button id="mainButton" type="button" onclick="doPost()">Подтвердить</button>
-            </form>
+                <button id="mainButton" type="button">Подтвердить</button>
+<%--            </form>--%>
 
 <%--            <div id="mainForm">--%>
 <%--&lt;%&ndash;                <label class="input" for="xInput">Введите X: </label>&ndash;%&gt;--%>
@@ -120,18 +121,23 @@
         </div>
         <tbody id  ="megaTbodyEshkere">
             <%
-                List<Point> points = (List<Point>) application.getAttribute("results");
-                Point lastPoint;
+                List<Point> points;
+                if (application.getAttribute("results") instanceof List<?>){
+                    points = cast(application.getAttribute("results"));
+                }else{
+                    points = new ArrayList<>();
+                }
+
+                //Point lastPoint;
                 if (points!=null){
                     for(Point point:points){
-                        if (point.getId().equals(request.getSession().getAttribute("id"))){
-            %>
+                        if (point.getId().equals(request.getSession().getAttribute("id"))){%>
                             <tr>
                                 <td>
                                     <%if (point.getX()== (int) point.getX()){%>
-                                        <%=(int)(point.getX()) %>
+                                    <%=(int)(point.getX()) %>
                                     <%}else{%>
-                                        <%=point.getX()%>
+                                    <%=point.getX()%>
                                     <%}%>
                                 </td>
                                 <td>
@@ -150,20 +156,20 @@
                                 </td>
 
                                 <%
-                                String status = point.getStatus();
-                                if (status.equals("true")) {
+                                    String status = point.getStatus();
+                                    if (status.equals("true")) {
                                 %>
-                                    <td><span style="color: #05da00">&#9745;</span></td>
+                                <td><span style="color: #05da00">&#9745;</span></td>
                                 <%
                                 } else if (status.equals("false")) {
                                 %>
-                                    <td><span style="color: red">&#9746;</span></td>
+                                <td><span style="color: red">&#9746;</span></td>
                                 <%
                                 }else{
                                 %>
-                                    <td><%=status%></td>
+                                <td><%=status%></td>
                                 <%
-                                }
+                                    }
                                 %>
                             </tr>
                 <%
@@ -174,7 +180,7 @@
         </tbody>
     </table>
 </div>
-<script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="canvas.js"></script>
+<script type="module" src="canvas.js"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>
