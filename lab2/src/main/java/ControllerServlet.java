@@ -1,9 +1,9 @@
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import logic.RequestManagers.ParamChecker;
 import logic.RequestManagers.RequestReader;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -21,7 +21,7 @@ public class ControllerServlet extends HttpServlet {
             req.setAttribute("params", params);
             req.getRequestDispatcher("AreaCheckServlet").forward(req, resp);
             //req.getRequestDispatcher("AreaCheckServlet").include(req, resp);
-            resp.getWriter().println("jjjj");
+            //resp.getWriter().println("jjjj");
         } else {
             resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid input");
         }

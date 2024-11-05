@@ -1,9 +1,9 @@
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import logic.Point;
 import logic.ResponseManagers.ContextManager;
 import logic.ResponseManagers.ResponseSender;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class AreaCheckServlet extends HttpServlet {

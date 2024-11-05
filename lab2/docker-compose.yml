@@ -1,7 +1,6 @@
 services:
   wildfly:
-    image: jboss/wildfly:20.0.1.Final
+    build: .
     ports:
       - "8080:8080"
-    volumes:
-      - ./target/lab2.war:/opt/jboss/wildfly/standalone/deployments/ROOT.war
+

@@ -1,6 +1,7 @@
 package logic.RequestManagers;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
+
 import java.io.BufferedReader;
 
 public class RequestReader {

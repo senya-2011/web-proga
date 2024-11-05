@@ -1,15 +1,16 @@
 package logic.ResponseManagers;
 
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import logic.Point;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import static com.sun.jmx.mbeanserver.Util.cast;
+//import static com.sun.jmx.mbeanserver.Util.cast;
 
 public class ContextManager {
     public void setNewPoint(Point point, HttpServletRequest req){
@@ -25,7 +26,7 @@ public class ContextManager {
         List<Point> results;
         Object resultObj= context.getAttribute("results");
         if (resultObj instanceof List<?>){
-            results = cast(resultObj);
+            results = (List<Point>) (resultObj);
         }else{
             results = new ArrayList<>();
         }

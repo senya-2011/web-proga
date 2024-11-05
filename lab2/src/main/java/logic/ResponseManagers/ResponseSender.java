@@ -1,8 +1,8 @@
 package logic.ResponseManagers;
 
 
+import jakarta.servlet.http.HttpServletResponse;
 import logic.Point;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ResponseSender {

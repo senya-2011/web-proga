@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="logic.Point, java.util.List" %>
-<%@ page import="static com.sun.jmx.mbeanserver.Util.cast" %>
 <%@ page import="java.util.ArrayList" %>
 
 
@@ -8,7 +7,7 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
-    <title>lab1</title>
+    <title>lab2</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -123,7 +122,7 @@
             <%
                 List<Point> points;
                 if (application.getAttribute("results") instanceof List<?>){
-                    points = cast(application.getAttribute("results"));
+                    points = (List<Point>)(application.getAttribute("results"));
                 }else{
                     points = new ArrayList<>();
                 }
@@ -179,6 +178,8 @@
                 %>
         </tbody>
     </table>
+<%--    <c:set var="age" value="18" />--%>
+<%--    <p>Adult: ${age >= 18}</p>    --%>
 </div>
 <script type="module" src="canvas.js"></script>
 <script type="module" src="script.js"></script>

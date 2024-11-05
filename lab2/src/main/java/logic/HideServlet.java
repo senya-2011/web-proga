@@ -1,6 +1,7 @@
 package logic;
 
-import javax.servlet.http.HttpServletRequest;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 public class HideServlet {
     public boolean checkReferrer(HttpServletRequest request) {
