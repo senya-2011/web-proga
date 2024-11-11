@@ -1,0 +1,124 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>lab3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&amp;family=Jacquarda+Bastarda+9&amp;family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&amp;display=swap" rel="stylesheet"/>
+    <link href="../styles/home_styles.css" rel="stylesheet" type="text/css"/>
+    <link href="../styles/styles.css" rel="stylesheet" type="text/css"/>
+    <link href="../styles/media.css" rel="stylesheet" type="text/css"/>
+</h:head>
+<h:body>
+    <header id="head">
+        <h1><h:link styleClass="link-page" value="Титульная страница" outcome="index" /></h1>
+    </header>
+    <div class="mainPage">
+        <div class="container">
+            <div class="item left">
+                <div>
+                    <h:form>
+                        <h:outputLabel class="input" for="x" value="Введите X: " />
+<!--                        <h:inputText id="x" value="#{formBean.x}" required="true" class="xSelection">-->
+<!--                            <f:validator validatorId="coordinateValidator" />-->
+<!--                        </h:inputText>-->
+                        <p:spinner id="x" value="#{formBean.x}" min="-5" max="5" required="true" widgetVar="spinnerX" class="xSelection">
+                            <f:validator validatorId="coordinateValidator" />
+                        </p:spinner>
+                        <br/>
+                        <h:message for="x" class="error" id="x_error"/>
+                        <br/>
+
+
+                        <h:outputLabel for="y" class="input" value="Введите Y: " />
+<!--                        <h:inputText id="y" value="#{formBean.y}" required="true" class="ySelection">-->
+<!--                            <f:validator validatorId="coordinateValidator" />-->
+<!--                        </h:inputText>-->
+                        <p:inputText id="y" value="#{formBean.y}" required="true" class="ySelection" widgetVar="inputTextY">
+                            <f:validator validatorId="coordinateValidator" />
+                        </p:inputText>
+                        <br/>
+                        <p:slider for="y" minValue="-3" maxValue="3" step="0.1" range="max" />
+                        <br/>
+                        <h:message for="y" class="error" id="y_error"/>
+                        <br/>
+
+
+
+<!--                        <h:outputLabel for="r" class="input" value="Введите R: " />-->
+<!--                        <h:inputText id="r" value="#{formBean.r}" required="true" class="rSelection">-->
+<!--                            <f:validator validatorId="coordinateValidator" />-->
+<!--                        </h:inputText>-->
+                        <h:outputLabel for="r" class="input" value="Введите R:" />
+                        <p:selectOneButton id="r" value="#{formBean.r}" required="true" widgetVar="rWidget" styleClass="rSelection">
+                            <f:selectItem itemLabel="1" itemValue="1"/>
+                            <f:selectItem itemLabel="2" itemValue="2"/>
+                            <f:selectItem itemLabel="3" itemValue="3"/>
+                            <f:validator validatorId="coordinateValidator" />
+                            <f:ajax render="rValue rNoHide" execute="r"/>
+                        </p:selectOneButton>
+                        <br/>
+                        <h:message for="r" class="error" id="r_error"/>
+                        <br/>
+
+                        <p:commandButton value="Отправить" action="#{formBean.submit()}" id="mainButton" class="button">
+                            <f:ajax execute="@form" render="resultTable r_error x_error y_error xValue yValue rValue statusValue trigger"/>
+                        </p:commandButton>
+                    </h:form>
+                    <h:inputHidden id="xValue" value="#{formBean.x}" />
+                    <h:inputHidden id="yValue" value="#{formBean.y}" />
+                    <h:inputHidden id="rValue" value="#{formBean.r}" class="hideRSelection"/>
+                    <h:inputHidden id="statusValue" value="#{formBean.status}" />
+                    <h:inputHidden id="trigger" class="trigger" value="#{formBean.trigger}" />
+
+                </div>
+            </div>
+            <div class="item right">
+                <canvas id="canvasPlot" width="300" height="300"/>
+            </div>
+
+<!--                <div class="tableDiv">-->
+<!--                    <p:dataTable value="#{pointsBean.points}" var="point" id="table" update="@form">-->
+<!--                        <p:column headerText="X" >-->
+<!--                            <h:outputText value="#{point.x}" />-->
+<!--                        </p:column>-->
+<!--                        <p:column headerText="Y">-->
+<!--                            <h:outputText value="#{point.y}" />-->
+<!--                        </p:column>-->
+<!--                        <p:column headerText="R" >-->
+<!--                            <h:outputText value="#{point.r}" />-->
+<!--                        </p:column>-->
+<!--                        <p:column headerText="В области" >-->
+<!--                            <h:outputText value="#{point.status}" />-->
+<!--                        </p:column>-->
+<!--                    </p:dataTable>-->
+<!--                </div>-->
+        </div>
+        <h:panelGroup id="resultTable">
+            <h:dataTable value="#{pointsManagedBean.points}" var="point">
+                <h:column>
+                    <f:facet name="header">X</f:facet>
+                    #{point.x}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Y</f:facet>
+                    #{point.y}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">R</f:facet>
+                    #{point.r}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Попал</f:facet>
+                    #{point.status ? '&#9745;' :  '&#9746;'}
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+    </div>
+    <script type="module" src="../scripts/canvas.js"></script>
+    <script type="module" src="../scripts/script.js"></script>
+</h:body>
+</html>

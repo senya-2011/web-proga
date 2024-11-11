@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>lab 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&amp;family=Jacquarda+Bastarda+9&amp;family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&amp;display=swap" rel="stylesheet"/>
+
+    <link href="../styles/styles.css" rel="stylesheet" type="text/css"/>
+    <link href="../styles/media.css" rel="stylesheet" type="text/css"/>
+</h:head>
+
+<h:body>
+    <header id="head">
+        <h1>Веб-программирование, Лабораторная работа №3, Вариант 228<br/></h1>
+        <h2>Алхимовици Арсений, P3210</h2>
+    </header>
+    <div class="mainPage">
+        <div class="welcome-page">
+            <h:link styleClass="link-page" value="Главная страница" outcome="home-page" />
+            <div class="clock">
+                <div class="time" id="time">Загрузка...</div>
+                <div class="date" id="date">Загрузка...</div>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/clock.js"></script>
+</h:body>
+</html>

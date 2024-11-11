@@ -1,0 +1,28 @@
+networks:
+  lab3:
+
+services:
+  database:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: lab3db
+    networks:
+      - lab3
+
+
+  wildfly:
+    build: .
+    ports:
+      - "8083:8080"
+    environment:
+      - POSTGRESQL_USER=postgres
+      - POSTGRESQL_PASSWORD=postgres
+      - POSTGRESQL_DATABASE=lab3db
+    depends_on:
+      - database
+    networks:
+      - lab3

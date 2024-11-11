@@ -1,0 +1,17 @@
+@media (max-width: 1199px){
+    .message{
+        margin-top: 20%;
+    }
+    .mainPage {
+        width: 70%;
+    }
+    /*.container {*/
+    /*    flex-direction: column;*/
+    /*    align-items: center;*/
+    /*    padding: 0;*/
+    /*}*/
+    .item {
+        padding: 5%;
+        flex-grow: 1;
+    }
+}
