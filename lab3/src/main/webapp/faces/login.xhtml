@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>lab 3</title>
+    <link href="../styles/styles.css" rel="stylesheet" type="text/css"/>
+    <link href="../styles/media.css" rel="stylesheet" type="text/css"/>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:outputLabel value="Пароль:" for="password" />
+        <h:inputSecret id="password" value="#{loginBean.password}" />
+        <h:commandButton value="Войти" action="#{loginBean.login}" />
+    </h:form>
+</h:body>
+</html>

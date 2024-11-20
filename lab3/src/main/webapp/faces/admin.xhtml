@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>admin</title>
+    <link href="../styles/styles.css" rel="stylesheet" type="text/css"/>
+    <link href="../styles/media.css" rel="stylesheet" type="text/css"/>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:commandButton value="Switch to MySQL" action="#{dynamicDataBaseBean.switchToMySQL}" />
+        <h:commandButton value="Switch to PostgreSQL" action="#{dynamicDataBaseBean.switchToPostgres}" />
+        <h:commandButton value="Switch to Hibernate" action="#{dynamicDataBaseBean.switchFactoryToHibernate}" />
+        <h:commandButton value="Switch to EclipseLink" action="#{dynamicDataBaseBean.switchFactoryToEclipseLink}" />
+
+        <br/>
+
+        <h:panelGrid columns="2" cellpadding="5">
+            <h:outputLabel value="Четверть квадрата:" style="display:block; margin-bottom:10px;" />
+
+            <p:selectOneButton value="#{areaBean.squareQ}">
+                <f:selectItem itemValue="1,1" itemLabel="1" />
+                <f:selectItem itemValue="-1,1" itemLabel="2" />
+                <f:selectItem itemValue="-1,-1" itemLabel="3" />
+                <f:selectItem itemValue="1,-1" itemLabel="4" />
+                <f:ajax event="change" render="@form" />
+            </p:selectOneButton>
+
+            <h:outputLabel for="squareX" value="Square Y:" />
+            <h:inputText id="squareX" value="#{areaBean.squareX}" >
+                <f:ajax event="blur" render="@form" />
+            </h:inputText>
+
+            <h:outputLabel for="squareY" value="Square Y:" />
+            <h:inputText id="squareY" value="#{areaBean.squareY}" >
+                <f:ajax event="blur" render="@form" />
+            </h:inputText>
+
+            <h:outputLabel value="Четверть треугольника:" style="display:block; margin-bottom:10px;" />
+
+            <p:selectOneButton value="#{areaBean.triangleQ}">
+                <f:selectItem itemValue="1,1" itemLabel="1" />
+                <f:selectItem itemValue="-1,1" itemLabel="2" />
+                <f:selectItem itemValue="-1,-1" itemLabel="3" />
+                <f:selectItem itemValue="1,-1" itemLabel="4" />
+                <f:ajax event="change" render="@form" />
+            </p:selectOneButton>
+
+            <h:outputLabel for="triangleX" value="Triangle X:" />
+            <h:inputText id="triangleX" value="#{areaBean.triangleX}" >
+                <f:ajax event="blur" render="@form" />
+            </h:inputText>
+
+            <h:outputLabel for="triangleY" value="Triangle Y:" />
+            <h:inputText id="triangleY" value="#{areaBean.triangleY}" >
+                <f:ajax event="blur" render="@form" />
+            </h:inputText>
+
+
+            <h:outputLabel value="Четверть круга:" style="display:block; margin-bottom:10px;" />
+
+            <p:selectOneButton value="#{areaBean.circleQ}">
+                <f:selectItem itemValue="1,1" itemLabel="1" />
+                <f:selectItem itemValue="-1,1" itemLabel="2" />
+                <f:selectItem itemValue="-1,-1" itemLabel="3" />
+                <f:selectItem itemValue="1,-1" itemLabel="4" />
+                <f:ajax event="change" render="@form" />
+            </p:selectOneButton>
+
+
+            <h:outputLabel for="circleRadius" value="Circle Radius:" />
+            <h:inputText id="circleRadius" value="#{areaBean.circleRadius}" >
+                <f:ajax event="blur" render="@form" />
+            </h:inputText>
+        </h:panelGrid>
+
+    </h:form>
+</h:body>
+</html>

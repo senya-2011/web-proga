@@ -4,24 +4,26 @@ const successColor = "green";
 const failColor = "red";
 export { successColor };
 export { failColor };
-const triggerInput = document.getElementById('trigger');
-const rInput = document.getElementById('rValue');
 
-const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'value') {
-            makeAjaxPoint();
+export function updateTable(){
+    PrimeFaces.ajax.Request.handle({
+        source: 'mainButton',
+        process: '@this',
+        update: 'resultTable r_error x_error y_error xValue yValue rValue statusValue trigger',
+        oncomplete: makeAjaxPoint
+    });
+}
+
+export function onRChanged(){
+    PrimeFaces.ajax.Request.handle({
+        source: 'r',
+        process: '@this',
+        update: 'rValue rNoHide',
+        oncomplete: function() {
+            update();
         }
     });
-});
-
-const rObserver = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && mutation.attributeName === 'value') {
-            updateCanvas(rInput.value);
-        }
-    });
-});
-
-rObserver.observe(rInput, { attributes: true });
-observer.observe(triggerInput, { attributes: true });
+}
+function update(){
+    updateCanvas(document.getElementById('rValue').value);
+}

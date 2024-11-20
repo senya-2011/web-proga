@@ -18,4 +18,15 @@
   <welcome-file-list>
     <welcome-file>faces/index.xhtml</welcome-file>
   </welcome-file-list>
+
+  <filter>
+    <filter-name>AdminFilter</filter-name>
+    <filter-class>filters.AdminFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AdminFilter</filter-name>
+    <url-pattern>/faces/admin.xhtml</url-pattern>
+  </filter-mapping>
+
+
 </web-app>

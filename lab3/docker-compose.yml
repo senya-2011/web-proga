@@ -2,7 +2,7 @@ networks:
   lab3:
 
 services:
-  database:
+  postgresDB:
     image: postgres:latest
     ports:
       - "5432:5432"
@@ -13,16 +13,28 @@ services:
     networks:
       - lab3
 
+  mysqlDB:
+    image: mysql:latest
+    ports:
+      - "8306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: lab3db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    volumes:
+      - ./mysql-files/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - lab3
+
 
   wildfly:
     build: .
     ports:
       - "8083:8080"
-    environment:
-      - POSTGRESQL_USER=postgres
-      - POSTGRESQL_PASSWORD=postgres
-      - POSTGRESQL_DATABASE=lab3db
     depends_on:
-      - database
+
+      - postgresDB
+      - mysqlDB
     networks:
       - lab3

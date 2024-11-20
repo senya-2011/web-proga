@@ -1,13 +1,11 @@
 package logic;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Point")
 public class Point {
     @Id
-    @GeneratedValue
     private Long id;
     private float x;
     private float y;
@@ -24,7 +22,6 @@ public class Point {
     public Point() {
 
     }
-
     public void setX(float x) {
         this.x = x;
     }

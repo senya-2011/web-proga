@@ -1,0 +1,15 @@
+<datasources xmlns="urn:jboss:domain:datasources:5.0">
+    <datasource jndi-name="java:/jdbc/MySQLDS" pool-name="MySQLDS" enabled="true" use-java-context="true">
+        <connection-url>jdbc:mysql://mysqlDB:3306/lab3db</connection-url>
+        <driver>mysql-connector-j-9.1.0.jar</driver>
+        <security>
+            <user-name>user</user-name>
+            <password>pass</password>
+        </security>
+    </datasource>
+    <drivers>
+        <driver name="mysql" module="com.mysql">
+            <xa-datasource-class>com.mysql.cj.jdbc.MysqlXADataSource</xa-datasource-class>
+        </driver>
+    </drivers>
+</datasources>
