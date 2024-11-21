@@ -1,5 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
     <meta charset="UTF-8"/>
     <title>lab 3</title>
@@ -23,6 +25,13 @@
                 <div class="time" id="time">Загрузка...</div>
                 <div class="date" id="date">Загрузка...</div>
             </div>
+
+<!--            <div class="clock">-->
+<!--                <h:outputText id="beanDate" value="#{clockBean.date}" />-->
+<!--                <br />-->
+<!--                <h:outputText id="beanTime" value="#{clockBean.time}" />-->
+<!--            </div>-->
+<!--            <p:poll interval="9" update="beanDate, beanTime"/>-->
         </div>
     </div>
     <script src="../scripts/clock.js"></script>
