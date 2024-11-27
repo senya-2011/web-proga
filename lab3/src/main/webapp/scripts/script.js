@@ -1,4 +1,5 @@
 import {makeAjaxPoint, updateCanvas} from './canvas.js';
+import { updatePageValue } from './autoUpdateScript.js';
 
 const successColor = "green";
 const failColor = "red";
@@ -10,7 +11,10 @@ export function updateTable(){
         source: 'mainButton',
         process: '@this',
         update: 'resultTable r_error x_error y_error xValue yValue rValue statusValue trigger',
-        oncomplete: makeAjaxPoint
+        oncomplete: function(){
+            updatePageValue();
+            makeAjaxPoint();
+        }
     });
 }
 

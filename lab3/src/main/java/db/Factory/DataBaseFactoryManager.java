@@ -25,6 +25,10 @@ public class DataBaseFactoryManager {
     private DataBaseFactory eclipseLinkFactory;
 
     @Inject
+    @FactoryType(FactoryTypes.JDBC)
+    private DataBaseFactory jdbcLinkFactory;
+
+    @Inject
     private Event<DataBaseTypeChangeEvent> event;
 
     @Inject
@@ -44,6 +48,9 @@ public class DataBaseFactoryManager {
                 break;
             case Eclipselink:
                 currentFactory = eclipseLinkFactory;
+                break;
+            case JDBC:
+                currentFactory = jdbcLinkFactory;
                 break;
             default:
                 throw new IllegalArgumentException("No support: " + factoryType);

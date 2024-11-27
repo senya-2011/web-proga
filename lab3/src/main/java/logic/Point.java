@@ -11,6 +11,8 @@ public class Point {
     private float y;
     private float r;
     private boolean status;
+    private String session;
+
 
     public Point(float x, float y, float r, boolean status){
         this.x = x;
@@ -22,6 +24,11 @@ public class Point {
     public Point() {
 
     }
+    public String getSession(){
+        return session;
+    }
+    public void setSession(String session){this.session=session;}
+
     public void setX(float x) {
         this.x = x;
     }

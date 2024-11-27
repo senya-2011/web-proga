@@ -22,19 +22,16 @@ public class DynamicDataBaseBean {
         incId();
         return id;
     }
-
+    public void switchFactoryToJdbc(){dataBaseFactoryManager.setFactoryType(FactoryTypes.JDBC);}
     public void switchToMySQL() {
         dataBaseFactoryManager.setDataBaseType(DataBaseTypes.MySQL);
     }
-
     public void switchToPostgres() {
         dataBaseFactoryManager.setDataBaseType(DataBaseTypes.POSTGRES);
     }
-
     public void switchFactoryToHibernate() {
         dataBaseFactoryManager.setFactoryType(FactoryTypes.Hibernate);
     }
-
     public void switchFactoryToEclipseLink() {
         dataBaseFactoryManager.setFactoryType(FactoryTypes.Eclipselink);
     }

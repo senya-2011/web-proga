@@ -5,6 +5,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import logic.AreaChecker;
 import logic.Point;
@@ -15,7 +16,8 @@ import java.util.Random;
 @Named("formBean")
 @SessionScoped
 public class FormBean implements Serializable {
-
+    @Inject
+    private HttpSession session;
     @Inject
     DataBaseFactoryManager dataBaseFactoryManager;
 
@@ -31,6 +33,7 @@ public class FormBean implements Serializable {
     private String r="1";
     private boolean status;
     private int trigger=1;
+    private int otherPageTrigger = 1;
 
     private final Random random = new Random();
 
@@ -40,7 +43,9 @@ public class FormBean implements Serializable {
         status = areaChecker.checkArea(Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(r));
         Point point = new Point(Float.parseFloat(x), Float.parseFloat(y), Float.parseFloat(r), status);
         point.setId(dynamicDataBaseBean.getId());
+        point.setSession(session.getId());
         dataBaseFactoryManager.getDataBaseService().createPoint(point);
+        updateOtherPageTrigger();
         pointsManagedBean.setPoints(dataBaseFactoryManager.getDataBaseService().getPoints());
         return null;
     }
@@ -50,6 +55,15 @@ public class FormBean implements Serializable {
         pointsManagedBean.setPoints(dataBaseFactoryManager.getDataBaseService().getPoints());
     }
 
+    public int getOtherPageTrigger(){
+        return otherPageTrigger;
+    }
+    public void setOtherPageTrigger(int trigger){
+        this.otherPageTrigger = trigger;
+    }
+    private void updateOtherPageTrigger(){
+        this.otherPageTrigger = random.nextInt(10000000);
+    }
     public int getTrigger(){return trigger;}
     public void setTrigger(int trigger){this.trigger=trigger;}
     public boolean getStatus(){return status;}

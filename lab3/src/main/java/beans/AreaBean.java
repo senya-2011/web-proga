@@ -7,11 +7,12 @@ import jakarta.inject.Named;
 import logic.LoggerInterface;
 import qualifiers.DecoratorQualifier;
 
+import java.io.Serializable;
 import java.util.Random;
 
 @Named("areaBean")
 @ApplicationScoped
-public class AreaBean {
+public class AreaBean{
     @Inject
     @DecoratorQualifier
     LoggerInterface loggerService;

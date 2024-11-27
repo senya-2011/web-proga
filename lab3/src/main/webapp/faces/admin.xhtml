@@ -14,8 +14,11 @@
     <h:form>
         <h:commandButton value="Switch to MySQL" action="#{dynamicDataBaseBean.switchToMySQL}" />
         <h:commandButton value="Switch to PostgreSQL" action="#{dynamicDataBaseBean.switchToPostgres}" />
+        <br/>
+        <hr style="border: 1px solid #ffd000; width: 100%; margin: 20px auto;"/>
         <h:commandButton value="Switch to Hibernate" action="#{dynamicDataBaseBean.switchFactoryToHibernate}" />
         <h:commandButton value="Switch to EclipseLink" action="#{dynamicDataBaseBean.switchFactoryToEclipseLink}" />
+        <h:commandButton value="Switch to JDBC" action="#{dynamicDataBaseBean.switchFactoryToJdbc}" />
 
         <br/>
 

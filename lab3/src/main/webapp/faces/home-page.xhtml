@@ -17,13 +17,19 @@
         import { updateTable } from '../scripts/script.js';
         import { onRChanged } from '../scripts/script.js';
         import { checkTrigger } from '../scripts/autoUpdateScript.js';
+        import { checkPageTrigger } from "../scripts/autoUpdateScript.js";
+
         window.updateTable = updateTable;
         window.onRChanged = onRChanged;
         window.checkTrigger = checkTrigger;
+        window.checkPageTrigger = checkPageTrigger;
     </script>
 
     <h:inputHidden id="updateTrigger" value="#{areaBean.updateTrigger}"/>
     <p:poll interval="5" update="updateTrigger" oncomplete="checkTrigger();"/>
+
+    <h:inputHidden id="otherPageTrigger" value="#{formBean.otherPageTrigger}"/>
+    <p:poll interval="5" update="otherPageTrigger" oncomplete="checkPageTrigger();"/>
 
     <h:inputHidden id="squareX_side" value="#{areaBean.squareX_side}" />
     <h:inputHidden id="squareY_side" value="#{areaBean.squareY_side}" />
