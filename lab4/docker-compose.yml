@@ -1,0 +1,34 @@
+networks:
+  lab4:
+
+services:
+  wildfly:
+    build: .
+    # ports:
+    #   - "8080:8080"
+    depends_on:
+      - postgresDB
+    networks:
+      - lab4
+
+  postgresDB:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: lab3db
+    networks:
+      - lab4
+  
+  frontend:
+    build:
+      context: ./
+      dockerfile: ./react_lab4/Dockerfile
+    ports:
+     - "8084:80"
+    networks:
+      - lab4
+    depends_on:
+      - wildfly
