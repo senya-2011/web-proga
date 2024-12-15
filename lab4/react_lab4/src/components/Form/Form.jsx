@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { setX, setY, setR } from "../../store/coordinateSlice";
 import { setPoints } from "../../store/pointSlice";
@@ -34,7 +34,7 @@ export default function Form(){
     };
 
     return(
-        <div class="item left">
+        <div className="item left">
                 <div>
                     <form onSubmit={handleSubmit}>
                         <div>

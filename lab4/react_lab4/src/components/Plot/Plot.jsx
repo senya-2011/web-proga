@@ -1,9 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import { setPoints } from '../../store/pointSlice';
-
-
+import PropTypes from 'prop-types'; 
 
 const CanvasPlot = ({onPointClick }) => {
     const {r } = useSelector((state) => state.coordinates); 
@@ -145,6 +144,10 @@ const CanvasPlot = ({onPointClick }) => {
             <canvas ref={canvasRef} width={width} height={height}/>
         </div>
         );
+};
+
+CanvasPlot.propTypes = {
+    onPointClick: PropTypes.func.isRequired, 
 };
 
 export default CanvasPlot;
