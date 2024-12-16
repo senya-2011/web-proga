@@ -12,7 +12,6 @@ import logic.LoggerService;
 import logic.User;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 @Stateless
 @Path("/auth")
@@ -29,6 +28,11 @@ public class AuthBean {
     @Consumes("application/json")
     @Produces("application/json")
     public Response login(User user) {
+        if(user==null || user.getLogin().equals("")){
+            Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                        .entity("Ошибка входа")
+                        .build();
+        }
         String login = user.getLogin();
         String password = user.getPassword();
 

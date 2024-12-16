@@ -45,6 +45,7 @@ export default function LoginPage() {
         if (response.status===200) {
             dispatch(login(loginValue));  
             localStorage.setItem('userLogin', loginValue);
+            localStorage.setItem('password', hashPassword);
             navigate("/");
         } else {
             setError("Ошибка авторизации. Проверьте логин и пароль.");
