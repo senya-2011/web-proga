@@ -29,7 +29,7 @@ public class AuthBean {
     @Produces("application/json")
     public Response login(User user) {
         if(user==null || user.getLogin().equals("")){
-            Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
                         .entity("Ошибка входа")
                         .build();
         }
