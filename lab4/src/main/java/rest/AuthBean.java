@@ -8,6 +8,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.Response;
+import logic.EmailSender;
 import logic.LoggerService;
 import logic.User;
 
@@ -22,6 +23,14 @@ public class AuthBean {
 
     @Inject
     LoggerService loggerService;
+
+    @Inject
+    EmailSender emailSender;
+
+
+    public void sendEmail(String title, String text,String user) {
+        emailSender.sendMessage(title, text, user);
+    }
 
     @POST
     @Path("/login")
@@ -50,6 +59,7 @@ public class AuthBean {
         if (existingUser != null) {
             loggerService.logInfo(existingUser.toString());
             if (existingUser.getPassword().equals(password)) {
+                sendEmail("Вход", "Вы вошли в аккаунт", login);
                 return Response.status(Response.Status.OK)
                         .entity("Успешно вошли")
                         .build();
@@ -60,9 +70,11 @@ public class AuthBean {
             }
         } else {
             dataBase.createUser(user);
+            sendEmail("Регистрация", "Вы успешно создали аккаунт", login);
             return Response.status(Response.Status.OK)
                     .entity("Успешно создан пользователь")
                     .build();
         }
     }
+
 }

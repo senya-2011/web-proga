@@ -27,8 +27,8 @@ export default function LoginPage() {
 
     e.preventDefault();
 
-  if (loginValue.trim().length < 4) {
-    setError("Логин должен содержать хотя бы 4 символа");
+  if  (!isValidEmail(loginValue)) {
+    setError("Введите почту!");
     return; 
   }
 
@@ -55,9 +55,19 @@ export default function LoginPage() {
     }
   };
 
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+    return emailRegex.test(email);
+  };
+
   const handleLoginChange = (e) => {
-    const valueWithoutSpaces = e.target.value.replace(/\s+/g, '');
-    setLogin(valueWithoutSpaces);
+    const value = e.target.value;
+    if (!isValidEmail(value)) {
+      setError("Введите корректный адрес электронной почты.");
+    } else {
+      setError(null); 
+    }
+    setLogin(value);
   };
 
   const handlePasswordChange = (e) => {

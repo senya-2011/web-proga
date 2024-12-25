@@ -1,5 +1,6 @@
 package db;
 
+import jakarta.ejb.Schedule;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -46,6 +47,12 @@ public class DataBase {
             return null;
         }
     }
+
+//    @Schedule(hour = "*", minute = "*", second = "*/10",persistent = false)
+//    public void EjbFull(){
+//        loggerService.logError("EJB FUUUUUll");
+//    }
+
 
     @Transactional
     public ArrayList<Point> getPoints() {
